@@ -57,6 +57,8 @@ function App() {
   const [activeCaseStudy, setActiveCaseStudy] = useState(null)
   const [passwordInput, setPasswordInput] = useState('')
   const [error, setError] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
   const inputRef = useRef(null)
 
   function openModal(project) {
@@ -92,6 +94,29 @@ function App() {
   }, [])
 
   useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 60)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  useEffect(() => {
+    const sections = ['work', 'about', 'contact']
+    const observers = sections.map(id => {
+      const el = document.getElementById(id)
+      if (!el) return null
+      const observer = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(id) },
+        { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
+      )
+      observer.observe(el)
+      return observer
+    })
+    return () => observers.forEach(o => o?.disconnect())
+  }, [])
+
+  useEffect(() => {
     if (openProject) {
       document.body.style.overflow = 'hidden'
       setTimeout(() => inputRef.current?.focus(), 50)
@@ -102,12 +127,12 @@ function App() {
 
   return (
     <>
-      <nav>
-        <span className="nav-name">Jaro Mlkvy</span>
+      <nav className={scrolled ? 'nav--scrolled' : ''}>
+        <span className="nav-name">jaromlkvy</span>
         <ul>
-          <li><a href="#work">Work</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#work" className={activeSection === 'work' ? 'nav-active' : ''}>Work</a></li>
+          <li><a href="#about" className={activeSection === 'about' ? 'nav-active' : ''}>About</a></li>
+          <li><a href="#contact" className={activeSection === 'contact' ? 'nav-active' : ''}>Contact</a></li>
         </ul>
       </nav>
 
@@ -115,13 +140,13 @@ function App() {
         {/* Hero */}
         <section id="hero">
           <div className="container">
-            <p className="hero-label">Product Designer</p>
+            <p className="hero-label">Jaro Mlkvy, Product Designer</p>
             <h1 className="hero-heading">
-              Designing clarity<br />in complex systems.
+              Designs with care.<br />Ships with taste.
             </h1>
             <p className="hero-sub">
-              5+ years crafting data-heavy interfaces for B2B SaaS —
-              dashboards, analytics tools, and data visualisation.
+              B2B product designer with 15+ years of experience, and a dedicated film nerd.
+              Same obsession with pacing, clarity, and not wasting the audience's time.
             </p>
             <div className="hero-meta">
               <span>Nove Zamky, Slovakia</span>
@@ -137,16 +162,16 @@ function App() {
         {/* Work */}
         <section id="work">
           <div className="container">
-            <p className="section-label">Selected Work</p>
+            <p className="section-label">A Peek Behind the Process</p>
             <div className="projects-grid">
               {projects.map((p) => (
                 <article
                   key={p.number}
-                  className="project-card"
-                  onClick={() => openModal(p)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => e.key === 'Enter' && openModal(p)}
+                  className={`project-card${p.id ? ' project-card--linked' : ''}`}
+                  onClick={() => p.id && openModal(p)}
+                  role={p.id ? 'button' : undefined}
+                  tabIndex={p.id ? 0 : undefined}
+                  onKeyDown={(e) => p.id && e.key === 'Enter' && openModal(p)}
                 >
                   <div className="project-card-inner">
                     <p className="project-number">{p.number}</p>

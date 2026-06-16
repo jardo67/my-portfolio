@@ -123,24 +123,44 @@
 nav {
   position: fixed;
   top: 0;
-  left: 0;
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 100;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 56px;
-  background: rgba(249, 249, 247, 0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
+  background: rgba(249, 249, 247, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(232, 232, 232, 0.6);
+  border-radius: 0;
+  transition:
+    width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    top 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    padding 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    border-radius 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1),
 }
 
+nav.nav--scrolled {
+  top: 16px;
+  width: min(880px, calc(100% - 48px));
+  padding: 14px 28px;
+  border-radius: 100px;
+  border-bottom: 1px solid rgba(232, 232, 232, 0.7);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.03);
+  background: rgba(249, 249, 247, 0.75);
+}
+
+
 .nav-name {
+  font-family: var(--font-heading);
   font-size: 15px;
   font-weight: 600;
-  letter-spacing: -0.02em;
   color: var(--text);
+  letter-spacing: -0.02em;
 }
 
 nav ul {
@@ -161,6 +181,11 @@ nav a:hover {
   color: var(--text);
 }
 
+nav a.nav-active {
+  color: var(--text);
+  font-weight: 600;
+}
+
 /* ── Layout ──────────────────────────────────────── */
 
 .container {
@@ -174,6 +199,7 @@ nav a:hover {
 #hero {
   padding: 192px 0 120px;
   border-bottom: 1px solid var(--border);
+  text-align: center;
 }
 
 .hero-label {
@@ -186,8 +212,8 @@ nav a:hover {
 }
 
 .hero-heading {
-  font-size: clamp(44px, 6.5vw, 80px);
-  margin-bottom: 28px;
+  font-size: clamp(36px, 5vw, 64px);
+  margin: 0 auto 28px;
   max-width: 820px;
 }
 
@@ -196,12 +222,13 @@ nav a:hover {
   color: var(--text-secondary);
   max-width: 520px;
   line-height: 1.65;
-  margin-bottom: 40px;
+  margin: 0 auto 40px;
 }
 
 .hero-meta {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
   font-size: 14px;
   color: var(--text-secondary);
@@ -260,10 +287,14 @@ nav a:hover {
 .project-card {
   background: var(--bg);
   transition: background 0.2s ease;
+  cursor: default;
+}
+
+.project-card--linked {
   cursor: pointer;
 }
 
-.project-card:hover {
+.project-card--linked:hover {
   background: var(--surface);
 }
 
