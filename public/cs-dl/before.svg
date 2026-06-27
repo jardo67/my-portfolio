@@ -1,0 +1,49 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif,system-ui,sans-serif">
+  <rect width="800" height="450" fill="#F7F7F5"/>
+  <!-- Header -->
+  <rect width="800" height="52" fill="#FFFFFF"/>
+  <rect y="52" width="800" height="1" fill="#E8E8E8"/>
+  <rect x="20" y="16" width="120" height="20" rx="4" fill="#F0F0EE"/>
+  <rect x="152" y="16" width="80" height="20" rx="4" fill="#F0F0EE"/>
+  <rect x="660" y="16" width="120" height="20" rx="4" fill="#111111"/>
+  <text x="720" y="30" fill="#FFFFFF" font-size="11" font-weight="600" text-anchor="middle">New document</text>
+  <!-- Confluence-like wiki page -->
+  <rect x="120" y="72" width="560" height="358" fill="#FFFFFF" rx="2"/>
+  <!-- Page header -->
+  <rect x="140" y="90" width="320" height="24" rx="3" fill="#F0F0EE"/>
+  <rect x="140" y="122" width="200" height="12" rx="2" fill="#E8E8E8"/>
+  <text x="140" y="90" fill="#111111" font-size="18" font-weight="700" dy="18">Data Pipeline Lineage — Q3</text>
+  <text x="140" y="126" fill="#9B9B9B" font-size="11">Last updated by Michal Horak · 3 days ago</text>
+  <!-- Separator -->
+  <rect x="140" y="142" width="500" height="1" fill="#E8E8E8"/>
+  <!-- Manually drawn lineage (ASCII-style box diagram) -->
+  <text x="140" y="168" fill="#6B6B6B" font-size="11">Lineage as understood during Q3 audit (may be outdated):</text>
+  <!-- Box diagram representing manual lineage -->
+  <rect x="140" y="182" width="500" height="200" rx="4" fill="#F9F9F7" stroke="#E8E8E8" stroke-width="1"/>
+  <!-- Fake "boxes connected with lines" sketch -->
+  <rect x="160" y="200" width="100" height="36" rx="4" fill="#E0E8FF" stroke="#B0C0EE" stroke-width="1"/>
+  <text x="210" y="223" fill="#2244AA" font-size="10" font-weight="600" text-anchor="middle">customers_src</text>
+  <line x1="260" y1="218" x2="300" y2="218" stroke="#9B9B9B" stroke-width="1.5" marker-end="url(#arr2)"/>
+  <defs><marker id="arr2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#9B9B9B"/></marker></defs>
+  <rect x="300" y="200" width="110" height="36" rx="4" fill="#E0E8FF" stroke="#B0C0EE" stroke-width="1"/>
+  <text x="355" y="223" fill="#2244AA" font-size="10" font-weight="600" text-anchor="middle">transform_v2?</text>
+  <line x1="410" y1="218" x2="455" y2="218" stroke="#9B9B9B" stroke-width="1.5" marker-end="url(#arr2)"/>
+  <rect x="455" y="200" width="105" height="36" rx="4" fill="#FFE8E0" stroke="#EECCB0" stroke-width="1"/>
+  <text x="507" y="218" fill="#AA4422" font-size="10" font-weight="600" text-anchor="middle">cust_final</text>
+  <text x="507" y="230" fill="#AA4422" font-size="9" text-anchor="middle">(or cust_360?)</text>
+  <!-- Row 2 -->
+  <rect x="160" y="260" width="100" height="36" rx="4" fill="#E0E8FF" stroke="#B0C0EE" stroke-width="1"/>
+  <text x="210" y="283" fill="#2244AA" font-size="10" font-weight="600" text-anchor="middle">orders_raw</text>
+  <line x1="260" y1="278" x2="300" y2="278" stroke="#9B9B9B" stroke-width="1.5" marker-end="url(#arr2)"/>
+  <rect x="300" y="260" width="110" height="36" rx="4" fill="#FFFFF0" stroke="#EEEEB0" stroke-width="1"/>
+  <text x="355" y="283" fill="#888800" font-size="10" font-weight="600" text-anchor="middle">orders_enrich</text>
+  <line x1="410" y1="278" x2="455" y2="260" stroke="#CC9900" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr2)"/>
+  <!-- Note annotation -->
+  <rect x="380" y="320" width="220" height="44" rx="4" fill="#FFFCE0" stroke="#EEE090" stroke-width="1"/>
+  <text x="392" y="338" fill="#888800" font-size="10" font-weight="600">⚠ Note:</text>
+  <text x="392" y="352" fill="#888800" font-size="9">products_db join unclear — check</text>
+  <text x="392" y="362" fill="#888800" font-size="9">with Martin before publishing</text>
+  <!-- Bottom callout -->
+  <rect x="140" y="392" width="500" height="20" rx="3" fill="#FFF3F0"/>
+  <text x="152" y="406" fill="#CC4422" font-size="10">⚠  This diagram was last verified 6 weeks ago and may not reflect current pipeline state</text>
+</svg>

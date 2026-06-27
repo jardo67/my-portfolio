@@ -1,0 +1,99 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif,system-ui,sans-serif">
+  <rect width="800" height="450" fill="#0C0C18"/>
+  <defs>
+    <pattern id="dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="12" cy="12" r="0.9" fill="#1A1A2C"/>
+    </pattern>
+    <marker id="arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M0,0 L0,7 L7,3.5 z" fill="#5555AA"/>
+    </marker>
+  </defs>
+  <rect width="800" height="450" fill="url(#dots)"/>
+  <!-- Selected path highlight (upstream of customer_360) -->
+  <path d="M 228,137 C 260,137 272,137 305,137" stroke="#7777EE" stroke-width="2.5" fill="none" marker-end="url(#arr)" opacity="0.9"/>
+  <path d="M 228,247 C 260,247 272,292 305,292" stroke="#7777EE" stroke-width="2.5" fill="none" marker-end="url(#arr)" opacity="0.5"/>
+  <path d="M 463,137 C 496,137 508,187 540,187" stroke="#7777EE" stroke-width="2.5" fill="none" marker-end="url(#arr)" opacity="0.9"/>
+  <!-- Other edges dimmed -->
+  <path d="M 228,357 C 260,357 272,312 305,312" stroke="#383860" stroke-width="1.5" fill="none" marker-end="url(#arr)" opacity="0.4"/>
+  <path d="M 463,292 C 496,292 508,212 540,212" stroke="#383860" stroke-width="1.5" fill="none" marker-end="url(#arr)" opacity="0.4"/>
+  <path d="M 463,292 C 496,292 508,317 540,317" stroke="#383860" stroke-width="1.5" fill="none" marker-end="url(#arr)" opacity="0.4"/>
+  <!-- Top bar -->
+  <rect width="800" height="46" fill="#11111E"/>
+  <rect y="46" width="800" height="1" fill="#222236"/>
+  <rect x="16" y="13" width="180" height="20" rx="4" fill="#222236"/>
+  <text x="106" y="27" fill="#8888CC" font-size="10" font-weight="600" text-anchor="middle">customer_360 — upstream</text>
+  <rect x="620" y="13" width="80" height="20" rx="4" fill="#222236"/>
+  <text x="660" y="27" fill="#4A4A70" font-size="9" text-anchor="middle">⬆ Upstream</text>
+  <rect x="706" y="13" width="80" height="20" rx="4" fill="#2A2A44"/>
+  <text x="746" y="27" fill="#8888CC" font-size="9" text-anchor="middle">⬇ Downstream</text>
+  <!-- Left sidebar -->
+  <rect width="50" height="404" y="46" fill="#11111E"/>
+  <rect x="50" y="46" width="1" height="404" fill="#222236"/>
+  <circle cx="25" cy="82" r="10" fill="#222236"/>
+  <circle cx="25" cy="114" r="10" fill="#2A2A44"/>
+  <circle cx="25" cy="146" r="10" fill="#222236"/>
+  <!-- NODES — highlighted upstream path -->
+  <!-- customers_raw (highlighted - source of issue) -->
+  <g transform="translate(80,110)">
+    <rect width="148" height="54" rx="6" fill="#1E1510" stroke="#EF444440" stroke-width="2"/>
+    <rect width="4" height="54" rx="2" fill="#EF4444"/>
+    <text x="14" y="18" fill="#704040" font-size="8" font-weight="700" letter-spacing="0.06em">TABLE</text>
+    <text x="14" y="34" fill="#EECCCC" font-size="11" font-weight="600">customers_raw</text>
+    <text x="14" y="47" fill="#704040" font-size="8">DQ: 61% · 14 failures</text>
+    <circle cx="131" cy="14" r="5" fill="#EF4444"/>
+  </g>
+  <!-- orders_raw (dimmed) -->
+  <g transform="translate(80,220)" opacity="0.4">
+    <rect width="148" height="54" rx="6" fill="#15152A" stroke="#252540" stroke-width="1"/>
+    <rect width="4" height="54" rx="2" fill="#22C55E"/>
+    <text x="14" y="34" fill="#CCCCEE" font-size="11" font-weight="600">orders_raw</text>
+    <circle cx="131" cy="14" r="5" fill="#22C55E"/>
+  </g>
+  <!-- products_db (dimmed) -->
+  <g transform="translate(80,330)" opacity="0.3">
+    <rect width="148" height="54" rx="6" fill="#15152A" stroke="#252540" stroke-width="1"/>
+    <rect width="4" height="54" rx="2" fill="#22C55E"/>
+    <text x="14" y="34" fill="#CCCCEE" font-size="11" font-weight="600">products_db</text>
+    <circle cx="131" cy="14" r="5" fill="#22C55E"/>
+  </g>
+  <!-- cust_dq_check (highlighted) -->
+  <g transform="translate(305,110)">
+    <rect width="158" height="54" rx="6" fill="#1E1510" stroke="#EF444440" stroke-width="2"/>
+    <rect width="4" height="54" rx="2" fill="#EAB308"/>
+    <text x="14" y="18" fill="#705030" font-size="8" font-weight="700" letter-spacing="0.06em">TRANSFORM</text>
+    <text x="14" y="34" fill="#EEDDCC" font-size="11" font-weight="600">cust_dq_check</text>
+    <text x="14" y="47" fill="#705030" font-size="8">14 rule failures</text>
+    <circle cx="141" cy="14" r="5" fill="#EAB308"/>
+  </g>
+  <!-- orders_enriched (dimmed) -->
+  <g transform="translate(305,265)" opacity="0.4">
+    <rect width="158" height="54" rx="6" fill="#15152A" stroke="#252540" stroke-width="1"/>
+    <rect width="4" height="54" rx="2" fill="#22C55E"/>
+    <text x="14" y="34" fill="#CCCCEE" font-size="11" font-weight="600">orders_enriched</text>
+    <circle cx="141" cy="14" r="5" fill="#22C55E"/>
+  </g>
+  <!-- customer_360 (selected) -->
+  <g transform="translate(540,160)">
+    <rect width="152" height="54" rx="6" fill="#0E1E0E" stroke="#22C55E" stroke-width="2"/>
+    <rect width="4" height="54" rx="2" fill="#22C55E"/>
+    <text x="14" y="18" fill="#448844" font-size="8" font-weight="700" letter-spacing="0.06em">OUTPUT · SELECTED</text>
+    <text x="14" y="34" fill="#CCEECC" font-size="11" font-weight="600">customer_360</text>
+    <text x="14" y="47" fill="#448844" font-size="8">DQ: 94% · 4.1M rows</text>
+    <circle cx="135" cy="14" r="5" fill="#22C55E"/>
+  </g>
+  <!-- sales_report (dimmed) -->
+  <g transform="translate(540,290)" opacity="0.3">
+    <rect width="152" height="54" rx="6" fill="#15152A" stroke="#252540" stroke-width="1"/>
+    <rect width="4" height="54" rx="2" fill="#22C55E"/>
+    <text x="14" y="34" fill="#CCCCEE" font-size="11" font-weight="600">sales_report</text>
+    <circle cx="135" cy="14" r="5" fill="#22C55E"/>
+  </g>
+  <!-- Impact callout -->
+  <rect x="60" y="96" width="168" height="6" rx="3" fill="#EF444420"/>
+  <rect x="285" y="96" width="178" height="6" rx="3" fill="#EF444420"/>
+  <rect x="520" y="146" width="172" height="6" rx="3" fill="#22C55E20"/>
+  <!-- Issue tooltip -->
+  <rect x="65" y="64" width="170" height="38" rx="4" fill="#1E1010" stroke="#EF4444" stroke-width="1"/>
+  <text x="78" y="80" fill="#EF8888" font-size="10" font-weight="600">Root cause found</text>
+  <text x="78" y="94" fill="#CC6666" font-size="9">DQ issue in customers_raw</text>
+</svg>

@@ -6,48 +6,51 @@ const PASSWORD = 'portfolio2025'
 
 const projects = [
   {
-    number: '01',
+    id: 'data-lineage',
     title: 'Data Lineage',
     company: 'Ataccama',
     year: '2022–present',
+    image: '/cs-dl/thumbnail.svg',
     description:
       'Visualisation of graph-based dataflows across enterprise databases, enabling data engineers to perform root cause analysis, impact analysis, and trace data quality issues end-to-end.',
-    outcome:
-      "Fastest-adopted module in Ataccama's history — 25 enterprise customers onboarded shortly after launch.",
+    stat: '25+',
+    statLabel: 'enterprise customers onboarded at launch',
     tags: ['Data Visualisation', 'Graph UI', 'B2B SaaS', 'UX Research'],
   },
   {
-    number: '02',
+    id: 'data-stories',
     title: 'Data Stories',
     company: 'Ataccama',
     year: '2023',
+    image: '/cs-ds/thumbnail.svg',
     description:
       'End-to-end design of a dashboard and presentation builder with live data — a PowerPoint-like editor enabling non-technical users to create and share insights without engineering support.',
-    outcome:
-      'Empowered business stakeholders to self-serve analytics and share insights independently.',
+    stat: '0',
+    statLabel: 'engineering requests needed to publish insights',
     tags: ['Dashboard Design', 'Editor UX', 'B2B SaaS'],
   },
   {
     id: 'processing-center',
-    number: '03',
     title: 'Processing Center',
     company: 'Ataccama',
     year: '2024',
+    image: '/cs-pc/solution-catalog-sidebar.png',
     description:
       'Redesigned the error discovery experience for platform workflows and jobs — transforming a frustrating diagnostic process into an intuitive, action-oriented interface accessible from anywhere in the platform.',
-    outcome:
-      'Reduced time-to-diagnosis and made error discoverability a first-class experience across the product.',
+    stat: '3 → 1',
+    statLabel: 'navigation levels to reach job-level detail',
     tags: ['Interaction Design', 'Error Handling', 'Platform UX'],
   },
   {
-    number: '04',
+    id: 'instore-analytics',
     title: 'In-store Analytics',
     company: 'Pygmalios',
     year: '2021–2022',
+    image: '/cs-ia/thumbnail.svg',
     description:
       'Mobile-first redesign of an in-store analytics product covering traffic flow, queue management, and customer journey analytics — enabling retail chain managers to act on data from anywhere.',
-    outcome:
-      'Full ownership from discovery research through to final UI delivery of a new mobile product.',
+    stat: '0 → 1',
+    statLabel: 'new mobile product from research to final delivery',
     tags: ['Mobile Design', 'Analytics', 'Retail'],
   },
 ]
@@ -125,6 +128,7 @@ function App() {
     }
   }, [openProject, activeCaseStudy])
 
+
   return (
     <>
       <nav className={scrolled ? 'nav--scrolled' : ''}>
@@ -142,20 +146,13 @@ function App() {
           <div className="container">
             <p className="hero-label">Jaro Mlkvy, Product Designer</p>
             <h1 className="hero-heading">
-              Designs with care.<br />Ships with taste.
+              <span className="hero-line">Designs with care.</span>
+              <span className="hero-line">Ships with taste.</span>
             </h1>
             <p className="hero-sub">
               B2B product designer with 15+ years of experience, and a dedicated film nerd.
               Same obsession with pacing, clarity, and not wasting the audience's time.
             </p>
-            <div className="hero-meta">
-              <span>Nove Zamky, Slovakia</span>
-              <span className="hero-dot" />
-              <span className="available">
-                <span className="available-dot" />
-                Open to new opportunities
-              </span>
-            </div>
           </div>
         </section>
 
@@ -166,15 +163,19 @@ function App() {
             <div className="projects-grid">
               {projects.map((p) => (
                 <article
-                  key={p.number}
+                  key={p.title}
                   className={`project-card${p.id ? ' project-card--linked' : ''}`}
                   onClick={() => p.id && openModal(p)}
                   role={p.id ? 'button' : undefined}
                   tabIndex={p.id ? 0 : undefined}
                   onKeyDown={(e) => p.id && e.key === 'Enter' && openModal(p)}
                 >
+                  <div className="project-thumb">
+                    {p.image
+                      ? <img src={p.image} alt={p.title} />
+                      : <div className="project-thumb-placeholder" />}
+                  </div>
                   <div className="project-card-inner">
-                    <p className="project-number">{p.number}</p>
                     <div className="project-top">
                       <div className="project-company">
                         <span>{p.company}</span>
@@ -185,7 +186,10 @@ function App() {
                       <p className="project-desc">{p.description}</p>
                     </div>
                     <div className="project-bottom">
-                      <p className="project-outcome">{p.outcome}</p>
+                      <div className="project-stat">
+                        <span className="project-stat-value">{p.stat}</span>
+                        <span className="project-stat-label">{p.statLabel}</span>
+                      </div>
                     </div>
                   </div>
                 </article>
@@ -319,6 +323,7 @@ function App() {
           <a href="mailto:jaro.mlkvy@gmail.com">jaro.mlkvy@gmail.com</a>
         </div>
       </footer>
+
     </>
   )
 }

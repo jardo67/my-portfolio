@@ -68,8 +68,43 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-secondary);
+  color: var(--eyebrow);
   margin-bottom: 20px;
+  display: inline-block;
+  position: relative;
+  isolation: isolate;
+}
+
+.cs-eyebrow::before {
+  content: '';
+  position: absolute;
+  top: -4px; left: -10px; right: -10px; bottom: -5px;
+  background:
+    linear-gradient(100deg,
+      rgba(255,255,255,0) 5%,
+      rgba(255,255,255,0.38) 19%,
+      rgba(255,255,255,0) 33%,
+      rgba(255,255,255,0.32) 49%,
+      rgba(255,255,255,0) 64%,
+      rgba(255,255,255,0.36) 79%,
+      rgba(255,255,255,0) 94%
+    ),
+    linear-gradient(106deg,
+      rgba(255,255,255,0.52) 0%,
+      rgba(255,255,255,0.22) 28%,
+      rgba(255,255,255,0.48) 54%,
+      rgba(255,255,255,0.20) 76%,
+      rgba(255,255,255,0.54) 100%
+    );
+  clip-path: polygon(
+    0% 16%,
+    2% 7%, 5% 0%, 14% 5%, 24% 0%, 36% 6%, 48% 1%, 60% 5%, 72% 0%, 83% 5%, 92% 1%, 97% 3%, 100% 16%,
+    99% 84%,
+    97% 93%, 88% 100%, 76% 94%, 64% 99%, 52% 93%, 40% 98%, 28% 93%, 17% 98%, 7% 93%, 2% 89%,
+    0% 80%
+  );
+  filter: blur(0.9px);
+  z-index: -1;
 }
 
 .cs-hero h1 {
@@ -107,7 +142,43 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--text-secondary);
+  color: var(--eyebrow);
+  display: inline-block;
+  width: fit-content;
+  position: relative;
+  isolation: isolate;
+}
+
+.cs-meta-label::before {
+  content: '';
+  position: absolute;
+  top: -3px; left: -7px; right: -7px; bottom: -4px;
+  background:
+    linear-gradient(101deg,
+      rgba(255,255,255,0) 6%,
+      rgba(255,255,255,0.34) 20%,
+      rgba(255,255,255,0) 35%,
+      rgba(255,255,255,0.28) 51%,
+      rgba(255,255,255,0) 67%,
+      rgba(255,255,255,0.32) 82%,
+      rgba(255,255,255,0) 96%
+    ),
+    linear-gradient(106deg,
+      rgba(255,255,255,0.50) 0%,
+      rgba(255,255,255,0.20) 30%,
+      rgba(255,255,255,0.46) 56%,
+      rgba(255,255,255,0.18) 78%,
+      rgba(255,255,255,0.52) 100%
+    );
+  clip-path: polygon(
+    0% 18%,
+    2% 7%, 6% 0%, 16% 5%, 28% 0%, 42% 6%, 56% 0%, 70% 5%, 83% 0%, 93% 4%, 98% 2%, 100% 18%,
+    100% 82%,
+    98% 91%, 90% 100%, 78% 94%, 65% 100%, 52% 93%, 40% 99%, 28% 93%, 16% 99%, 6% 93%, 1% 88%,
+    0% 76%
+  );
+  filter: blur(0.9px);
+  z-index: -1;
 }
 
 .cs-meta-value {
@@ -139,8 +210,43 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-secondary);
+  color: var(--eyebrow);
   margin-bottom: 28px;
+  display: inline-block;
+  position: relative;
+  isolation: isolate;
+}
+
+.cs-section-label::before {
+  content: '';
+  position: absolute;
+  top: -3px; left: -8px; right: -8px; bottom: -4px;
+  background:
+    linear-gradient(103deg,
+      rgba(255,255,255,0) 6%,
+      rgba(255,255,255,0.36) 20%,
+      rgba(255,255,255,0) 34%,
+      rgba(255,255,255,0.30) 50%,
+      rgba(255,255,255,0) 65%,
+      rgba(255,255,255,0.34) 80%,
+      rgba(255,255,255,0) 95%
+    ),
+    linear-gradient(106deg,
+      rgba(255,255,255,0.52) 0%,
+      rgba(255,255,255,0.22) 28%,
+      rgba(255,255,255,0.48) 54%,
+      rgba(255,255,255,0.20) 76%,
+      rgba(255,255,255,0.54) 100%
+    );
+  clip-path: polygon(
+    0% 15%,
+    1% 5%, 4% 0%, 13% 4%, 23% 0%, 35% 5%, 47% 0%, 59% 5%, 71% 0%, 82% 4%, 92% 0%, 97% 3%, 100% 16%,
+    100% 84%,
+    98% 95%, 89% 100%, 78% 94%, 66% 100%, 54% 93%, 42% 99%, 30% 93%, 18% 98%, 8% 93%, 2% 89%,
+    0% 79%
+  );
+  filter: blur(0.9px);
+  z-index: -1;
 }
 
 .cs-section h2 {
@@ -496,6 +602,7 @@
 .cs-image-row .cs-image figcaption {
   font-size: 12px;
 }
+
 
 /* ── Mobile ──────────────────────────────────────── */
 

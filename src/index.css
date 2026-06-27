@@ -7,9 +7,10 @@
 :root {
   --bg: #F9F9F7;
   --surface: #FFFFFF;
-  --text: #111111;
-  --text-secondary: #6B6B6B;
+  --text: #1C1917;
+  --text-secondary: #706B65;
   --border: #E8E8E8;
+  --eyebrow: #D4845A;
   --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-heading: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
 }
@@ -19,7 +20,11 @@ html {
 }
 
 body {
-  background: var(--bg);
+  background:
+    radial-gradient(ellipse at 85% 10%, #E8E0F5 0%, transparent 55%),
+    radial-gradient(ellipse at 10% 90%, #F5E0CC 0%, transparent 55%),
+    var(--bg);
+  background-attachment: fixed;
   color: var(--text);
   font-family: var(--font);
   font-size: 16px;
