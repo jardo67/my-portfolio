@@ -7,7 +7,7 @@ const PASSWORD = 'portfolio2025'
 const projects = [
   {
     id: 'data-lineage',
-    title: 'Data Lineage',
+    title: 'End-to-end data lineage for enterprise',
     company: 'Ataccama',
     year: '2022–present',
     image: '/cs-dl/thumbnail.svg',
@@ -19,7 +19,7 @@ const projects = [
   },
   {
     id: 'data-stories',
-    title: 'Data Stories',
+    title: 'Self-serve insight publishing, no engineering needed',
     company: 'Ataccama',
     year: '2023',
     image: '/cs-ds/thumbnail.svg',
@@ -31,10 +31,10 @@ const projects = [
   },
   {
     id: 'processing-center',
-    title: 'Processing Center',
+    title: 'Error discovery from 3 navigation levels to 1',
     company: 'Ataccama',
     year: '2024',
-    image: '/cs-pc/solution-catalog-sidebar.png',
+    image: '/cs-pc/thumbnail.png',
     description:
       'Redesigned the error discovery experience for platform workflows and jobs — transforming a frustrating diagnostic process into an intuitive, action-oriented interface accessible from anywhere in the platform.',
     stat: '3 → 1',
@@ -43,7 +43,7 @@ const projects = [
   },
   {
     id: 'instore-analytics',
-    title: 'In-store Analytics',
+    title: 'Mobile-first retail analytics from zero to one',
     company: 'Pygmalios',
     year: '2021–2022',
     image: '/cs-ia/thumbnail.svg',
@@ -152,7 +152,22 @@ function App() {
   const [error, setError] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('')
+  const [cardHovered, setCardHovered] = useState(false)
   const inputRef = useRef(null)
+  const cursorPillRef = useRef(null)
+
+  useEffect(() => {
+    const el = cursorPillRef.current
+    const onMove = (e) => {
+      if (el) {
+        el.style.left = e.clientX + 'px'
+        el.style.top = e.clientY + 'px'
+      }
+    }
+    window.addEventListener('mousemove', onMove)
+    return () => window.removeEventListener('mousemove', onMove)
+  }, [])
+
 
   function openModal(project) {
     setOpenProject(project)
@@ -203,6 +218,14 @@ function App() {
           work.classList.add('work--visible')
         }
       }
+
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight
+      const p = maxScroll > 0 ? Math.min(1, scrollY / maxScroll) : 0
+      const root = document.documentElement
+      root.style.setProperty('--grad-x1', (85 - p * 25) + '%')
+      root.style.setProperty('--grad-y1', (10 + p * 50) + '%')
+      root.style.setProperty('--grad-x2', (10 + p * 40) + '%')
+      root.style.setProperty('--grad-y2', (90 - p * 70) + '%')
     }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -235,7 +258,7 @@ function App() {
   return (
     <>
       <nav className={scrolled ? 'nav--scrolled' : ''}>
-        <button className="nav-name" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>jaromlkvy</button>
+        <button className="nav-name" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Jaro Mlkvy <span className="nav-role">Product Designer</span></button>
         <ul>
           <li><a href="#work" className={activeSection === 'work' ? 'nav-active' : ''} onClick={e => { e.preventDefault(); document.getElementById('work')?.scrollIntoView({ behavior: 'smooth', block: 'center' }) }}>Work</a></li>
           <li><a href="#about" className={activeSection === 'about' ? 'nav-active' : ''} onClick={e => { e.preventDefault(); document.getElementById('about')?.scrollIntoView({ behavior: 'smooth', block: 'center' }) }}>About</a></li>
@@ -247,13 +270,12 @@ function App() {
         {/* Hero */}
         <section id="hero">
           <div className="container">
-            <p className="hero-label">Jaro Mlkvy, Product Designer</p>
             <h1 className="hero-heading">
               <span className="hero-line">Designs with care.</span>
               <span className="hero-line">Ships with taste.</span>
             </h1>
             <p className="hero-sub">
-              B2B product designer with 15+ years of experience, and a dedicated film nerd.
+              B2B product designer with 15+ years of experience, and a dedicated 🍿 film nerd.
               Same obsession with pacing, clarity, and not wasting the audience's time.
             </p>
             <button
@@ -270,7 +292,7 @@ function App() {
         {/* Work */}
         <section id="work">
           <div className="container">
-            <h2 className="work-heading">A Peek Behind the Process</h2>
+            <h2 className="work-heading">A Peek Behind the Scenes</h2>
             <div className="work-card">
             <div className="projects-grid">
               {projects.map((p) => (
@@ -281,6 +303,8 @@ function App() {
                   role={p.id ? 'button' : undefined}
                   tabIndex={p.id ? 0 : undefined}
                   onKeyDown={(e) => p.id && e.key === 'Enter' && openModal(p)}
+                  onMouseEnter={() => p.id && setCardHovered(true)}
+                  onMouseLeave={() => setCardHovered(false)}
                 >
                   <div className="project-thumb">
                     {p.image
@@ -289,19 +313,9 @@ function App() {
                   </div>
                   <div className="project-card-inner">
                     <div className="project-top">
-                      <div className="project-company">
-                        <span>{p.company}</span>
-                        <span className="project-company-dot" />
-                        <span>{p.year}</span>
-                      </div>
                       <h2 className="project-title">{p.title}</h2>
-                      <p className="project-desc">{p.description}</p>
                     </div>
                     <div className="project-bottom">
-                      <div className="project-stat">
-                        <span className="project-stat-value">{p.stat}</span>
-                        <span className="project-stat-label">{p.statLabel}</span>
-                      </div>
                       <div className="project-arrow">
                         <svg width="15" height="17" viewBox="0 0 15 17" fill="none" aria-hidden="true">
                           <path d="M4.5 8V5.5a3 3 0 1 1 6 0V8" stroke="#1C1C1C" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -432,14 +446,16 @@ function App() {
             <button className="modal-close" onClick={closeModal} aria-label="Close">
               ✕
             </button>
-            <div className="modal-lock">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-              </svg>
+            <div className="modal-header">
+              <div className="modal-header-title">
+                <svg className="modal-lock" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+                <h2 className="modal-title">{openProject.title}</h2>
+              </div>
+              <p className="modal-meta">{openProject.company}<br/>{openProject.year}</p>
             </div>
-            <p className="modal-meta">{openProject.company} · {openProject.year}</p>
-            <h2 className="modal-title">{openProject.title}</h2>
             <p className="modal-hint">This case study is password protected.</p>
             <form onSubmit={handleSubmit} className="modal-form">
               <input
@@ -493,6 +509,19 @@ function App() {
           </span>
         </div>
       </footer>
+
+      {/* Cursor-following pill on card hover */}
+      <div
+        ref={cursorPillRef}
+        className={`cursor-pill${cardHovered && !openProject ? ' cursor-pill--visible' : ''}`}
+        aria-hidden="true"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+          <circle cx="12" cy="12" r="3" stroke="white" strokeWidth="2.2"/>
+        </svg>
+        View case study
+      </div>
 
     </>
   )

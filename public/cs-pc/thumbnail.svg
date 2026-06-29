@@ -1,0 +1,33 @@
+<svg viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#F2F2F0"/>
+
+  <text x="32" y="46" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="26" font-weight="700" fill="#111827">Processing center</text>
+
+  <!-- Row 1: Completed -->
+  <rect x="32" y="64" width="536" height="62" rx="10" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="56" y="100" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="15" fill="#111827">Profile and evaluate</text>
+  <rect x="258" y="80" width="106" height="28" rx="14" fill="#D1FAE5"/>
+  <text x="311" y="98" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="600" fill="#065F46">Completed</text>
+  <text x="430" y="100" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" fill="#9CA3AF">Started 12 min ago</text>
+
+  <!-- Row 2: In progress -->
+  <rect x="32" y="138" width="536" height="62" rx="10" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="56" y="174" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="15" fill="#111827">Documentation flow</text>
+  <rect x="258" y="154" width="98" height="28" rx="14" fill="#E0E7FF"/>
+  <text x="307" y="172" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="600" fill="#3730A3">In progress</text>
+  <text x="430" y="174" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" fill="#9CA3AF">Started 3 hours ago</text>
+
+  <!-- Row 3: Partially failed -->
+  <rect x="32" y="212" width="536" height="62" rx="10" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="56" y="248" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="15" fill="#111827">Import metadata</text>
+  <rect x="258" y="228" width="130" height="28" rx="14" fill="#FEF3C7"/>
+  <text x="323" y="246" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="600" fill="#92400E">Partially failed</text>
+  <text x="430" y="248" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" fill="#9CA3AF">Started 6 days ago</text>
+
+  <!-- Row 4: Failed -->
+  <rect x="32" y="286" width="536" height="62" rx="10" fill="white" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="56" y="322" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="15" fill="#111827">Import metadata</text>
+  <rect x="258" y="302" width="72" height="28" rx="14" fill="#FEE2E2"/>
+  <text x="294" y="320" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="600" fill="#991B1B">Failed</text>
+  <text x="430" y="322" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" fill="#9CA3AF">Finished 6 days ago</text>
+</svg>

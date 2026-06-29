@@ -21,8 +21,8 @@ html {
 
 body {
   background:
-    radial-gradient(ellipse at 85% 10%, #D8CCEF 0%, transparent 60%),
-    radial-gradient(ellipse at 10% 90%, #F0D0B8 0%, transparent 60%),
+    radial-gradient(ellipse at var(--grad-x1, 85%) var(--grad-y1, 10%), #D8CCEF 0%, transparent 60%),
+    radial-gradient(ellipse at var(--grad-x2, 10%) var(--grad-y2, 90%), #F0D0B8 0%, transparent 60%),
     var(--bg);
   background-attachment: fixed;
   color: var(--text);
